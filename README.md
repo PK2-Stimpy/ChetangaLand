@@ -1,4 +1,4 @@
-# ChetangaLand
+# ChetangaLand 1.18.2
 This is the plugin for ItsTuki's server.
 
 ### Features
