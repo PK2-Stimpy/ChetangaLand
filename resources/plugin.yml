@@ -1,0 +1,9 @@
+name: ChetangaLand
+version: 1.0
+main: me.pk2.chetangaland.Chetanga
+author: PK2_Stimpy
+softdepend:
+  - ProtocolLib
+commands:
+  cprefix:
+    description: Prefixes

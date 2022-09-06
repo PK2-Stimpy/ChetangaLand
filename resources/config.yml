@@ -1,0 +1,7 @@
+prefixes:
+  default:
+    prefix: '&8[&eDEFAULT&8]&r'
+    show:
+      tab: true
+      chat: true
+      tag: true
