@@ -57,6 +57,7 @@ public class UserListener implements Listener {
     public void onChat(PlayerChatEvent event) {
         if(!ChatStorage.chat_enabled && !event.getPlayer().hasPermission("chetanga.chat.bypass")) {
             event.getPlayer().sendMessage(c("&cEl chat está bloquedo lol."));
+            event.setCancelled(true);
             return;
         }
 
