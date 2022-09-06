@@ -7,3 +7,7 @@ softdepend:
 commands:
   cprefix:
     description: Prefixes
+  mute:
+    description: Mute system
+  togglechat:
+    description: Toggles chat

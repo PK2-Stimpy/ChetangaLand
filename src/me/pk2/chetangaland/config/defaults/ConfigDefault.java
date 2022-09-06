@@ -19,7 +19,8 @@ public class ConfigDefault {
 
         Set<String> keys = configuration.getConfigurationSection("prefixes").getKeys(false);
         for(String key : keys) {
-            ConfigurationSection section = configuration.getConfigurationSection("prefixes." + key);
+            System.out.println(key);
+            ConfigurationSection section = configuration.getConfigurationSection("prefixes").getConfigurationSection(key);
             PrefixPrefab prefab = new PrefixPrefab(key, section.getString("prefix"), section.getBoolean("show.tab"), section.getBoolean("show.chat"), section.getBoolean("show.tag"));
             PrefixPrefab.prefabs.put(prefab.id, prefab);
 
@@ -32,16 +33,10 @@ public class ConfigDefault {
         configuration.set("prefixes", null);
 
         for(PrefixPrefab prefab : prefixes.values()) {
-            ConfigurationSection section = configuration.createSection("prefixes." + prefab.id);
-            section.set("prefix", prefab.prefix);
-
-            ConfigurationSection show = configuration.createSection("show");
-            show.set("tab", prefab.show.tab);
-            show.set("chat", prefab.show.chat);
-            show.set("tag", prefab.show.tag);
-
-            section.set("show", show);
-            configuration.set("prefixes." + prefab.id, section);
+            configuration.set("prefixes." + prefab.id + ".prefix", prefab.prefix);
+            configuration.set("prefixes." + prefab.id + ".show.tab", prefab.show.tab);
+            configuration.set("prefixes." + prefab.id + ".show.chat", prefab.show.chat);
+            configuration.set("prefixes." + prefab.id + ".show.tag", prefab.show.tag);
         }
 
         INSTANCE.saveConfig();

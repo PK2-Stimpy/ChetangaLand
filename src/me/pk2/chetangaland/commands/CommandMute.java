@@ -41,7 +41,7 @@ public class CommandMute implements CommandExecutor {
             return true;
         }
 
-        long ms = toms(args[2]);
+        long ms = toms(args[1]);
         if(ms < 0) {
             sender.sendMessage(c("&cInvalid time expression! Expressions: &4{y/d/h/m/s}"));
             return true;
@@ -49,7 +49,7 @@ public class CommandMute implements CommandExecutor {
 
         user.CONFIG.muted = System.currentTimeMillis()+ms;
         user.save();
-        sender.sendMessage(c("&aMuted player &e" + player.getName() + " &afor &e" + ms));
+        sender.sendMessage(c("&aMuted player &e" + player.getName() + " &afor &e" + args[1]));
         return true;
     }
 }

@@ -46,7 +46,7 @@ public class CommandCPrefix implements CommandExecutor {
                     break;
                 }
 
-                User user = Chetanga.INSTANCE.userManager.users.get(player.getUniqueId().toString());
+                User user = Chetanga.INSTANCE.userManager.users.get(player.getUniqueId().toString().toLowerCase());
                 user.CONFIG.prefix.set(prefab);
                 user.save();
                 sender.sendMessage(c("&aChanged &e" + player.getName() + " &aprefix to &e\"&r" + prefab.prefix + "&e\""));
@@ -99,17 +99,17 @@ public class CommandCPrefix implements CommandExecutor {
                 option: switch(args[2].toLowerCase()) {
                     case "tab" -> {
                         prefab.show.tab = !prefab.show.tab;
-                        sender.sendMessage(c("&eToggle tab from " + prefab.id + " " + (prefab.show.tab?"&aON":"&cOFF")));
+                        sender.sendMessage(c("&eToggled tab from " + prefab.id + " " + (prefab.show.tab?"&aON":"&cOFF")));
                     }
 
                     case "chat" -> {
                         prefab.show.chat = !prefab.show.chat;
-                        sender.sendMessage(c("&eToggle chat from " + prefab.id + " " + (prefab.show.tab?"&aON":"&cOFF")));
+                        sender.sendMessage(c("&eToggled chat from " + prefab.id + " " + (prefab.show.chat?"&aON":"&cOFF")));
                     }
 
                     case "tag" -> {
                         prefab.show.tag = !prefab.show.tag;
-                        sender.sendMessage(c("&eToggle tag from " + prefab.id + " " + (prefab.show.tab?"&aON":"&cOFF")));
+                        sender.sendMessage(c("&eToggled tag from " + prefab.id + " " + (prefab.show.tag?"&aON":"&cOFF")));
                     }
 
                     default -> sender.sendMessage(c("&c/cprefix show <prefix> {tab/chat/tag}"));
@@ -128,7 +128,7 @@ public class CommandCPrefix implements CommandExecutor {
                     break;
                 }
 
-                PrefixPrefab prefab = PrefixPrefab.prefabs.get(args[0]);
+                PrefixPrefab prefab = PrefixPrefab.prefabs.get(args[1]);
                 if(prefab != null) {
                     sender.sendMessage(c("&cThe specified prefix already exists."));
                     break;
@@ -169,7 +169,7 @@ public class CommandCPrefix implements CommandExecutor {
                 sender.sendMessage(c("&a \n&r" +
                         "&e----- ChetangaLand Prefix -----\n" +
                         "  &a/cprefix help\n" +
-                        "  &a/cprefix set <player> <prefix>\"" +
+                        "  &a/cprefix set <player> <prefix>\n" +
                         "  &a/cprefix edit <prefix> <text>\n" +
                         "  &a/cprefix show <prefix> {tab/chat/tag}\n" +
                         "  &a/cprefix create <prefix> <text>\n" +

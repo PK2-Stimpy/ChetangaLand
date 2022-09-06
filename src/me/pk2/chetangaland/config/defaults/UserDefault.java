@@ -17,6 +17,10 @@ public class UserDefault {
     public long muted;
     public YamlConfiguration configuration;
 
+    public UserDefault() {
+        prefix = new AtomicReference<>();
+    }
+
     public void load(User user) {
         this.user = user;
 
@@ -25,7 +29,7 @@ public class UserDefault {
             file.getParentFile().mkdirs();
             try {
                 PrintWriter writer = new PrintWriter(file);
-                writer.write("prefix: NONE\nmuted: 0\nmuted_reason: \"\"");
+                writer.write("prefix: NONE\nmuted: 0");
                 writer.close();
             } catch (FileNotFoundException e) { e.printStackTrace(); }
         }
