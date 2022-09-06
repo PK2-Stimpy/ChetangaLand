@@ -17,7 +17,7 @@ public class ConfigDefault {
         FileConfiguration configuration = INSTANCE.getConfig();
         PrefixPrefab.prefabs.clear();
 
-        Set<String> keys = configuration.getKeys(false);
+        Set<String> keys = configuration.getConfigurationSection("prefixes").getKeys(false);
         for(String key : keys) {
             ConfigurationSection section = configuration.getConfigurationSection("prefixes." + key);
             PrefixPrefab prefab = new PrefixPrefab(key, section.getString("prefix"), section.getBoolean("show.tab"), section.getBoolean("show.chat"), section.getBoolean("show.tag"));
